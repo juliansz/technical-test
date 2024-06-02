@@ -18,7 +18,7 @@ class TaskFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'priority' => fake()->integer(),
+            'priority' => fake()->randomNumber(2, false)
         ];
     }
 }
