@@ -1,0 +1,9 @@
+*.sqlite*
+app/Models/Task.php
+app/Models/Project.php
+database/factories/TaskFactory.php
+database/factories/ProjectFactory.php
+database/migrations/2024_06_02_213618_create_projects_table.php
+database/migrations/2024_06_02_213626_create_tasks_table.php
+database/seeders/ProjectSeeder.php
+database/seeders/TaskSeeder.php
