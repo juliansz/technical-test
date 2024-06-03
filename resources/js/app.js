@@ -3,13 +3,13 @@ import Sortable from 'sortablejs/modular/sortable.complete.esm.js';
 
 let project  = document.getElementById('project_id')
 let project_id = project.value;
-let list = document.getElementById('list');
-let tasks_list = list.querySelectorAll('li')
+let list = document.getElementById('tasks');
+let tasks_list = list.querySelectorAll('tr')
 
 const filterTaskByProject = (event) => {
     project_id = event.target ? event.target.value : project_id;
     tasks_list.forEach((task) => {
-        task.style.display = (task.dataset.projectId === project_id) ? 'block' : 'none';
+        task.style.display = (task.dataset.projectId === project_id) ? 'table-row' : 'none';
     })
 }
 
@@ -22,7 +22,7 @@ const token = document.querySelector('meta[name="csrf-token"]').attributes['cont
 let sort = new Sortable(list, {
     onSort: function (event) {
         let tasks = []
-        list.querySelectorAll('li').forEach((task) => {
+        list.querySelectorAll('tr').forEach((task) => {
             if(task.dataset.projectId === project_id){
                 tasks.push(task.dataset.id)
             }
