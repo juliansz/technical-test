@@ -29,9 +29,9 @@
                     <main class="mt-12">
                         <div class="grid gap-12">
                             <ul id="list">
-                                <li>item 1</li>
-                                <li>item 2</li>
-                                <li>item 3</li>
+                                @foreach($tasks as $task)
+                                    <li>{{ $task->name }}</li>
+                                @endforeach
                             </ul>
                         </div>
                     </main>

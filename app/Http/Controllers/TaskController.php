@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
+use App\Models\Task;
+
 class TaskController extends Controller
 {
     function getIndex(){
-        return view('index');
+        $tasks = Task::all();
+        return view('index', compact('tasks'));
     }
 }
