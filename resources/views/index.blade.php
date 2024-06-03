@@ -23,15 +23,22 @@
                     <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
                         <div class="flex lg:justify-center lg:col-start-2">
                             <h1>Tasks</h1>
-                            <h4>Project: {{ $project->name }}</h4>
                         </div>
                     </header>
 
                     <main class="mt-12">
                         <div class="grid gap-12">
-                            <ul id="list" data-update-url={{ route('UpdateTasksPriority') }} data-project-id="{{ $project->id }}">
+                            <select name="project_id" id="project_id">
+                                @foreach($projects as $project)
+                                    <option value="{{ $project->id }}">{{ $project->name }}</option>
+                                @endforeach
+                            </select>
+                            <ul id="list" data-update-url={{ route('UpdateTasksPriority') }}>
                                 @foreach($tasks as $task)
-                                    <li data-id="{{ $task->id }}">{{ $task->name }}</li>
+                                    <li 
+                                        data-id="{{ $task->id }}" 
+                                        data-project-id="{{ $task->project_id }}"
+                                    >{{ $task->name }}</li>
                                 @endforeach
                             </ul>
                         </div>

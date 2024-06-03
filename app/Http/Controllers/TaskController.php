@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class TaskController extends Controller
 {
     function getIndex(){
-        $project = Project::first(); //inRandomOrder()->
-        $tasks = Task::fromProject($project)->orderBy('priority', 'ASC')->get();
-        return view('index', compact('tasks', 'project'));
+        $projects = Project::all();
+        $tasks = Task::orderBy('priority', 'ASC')->get();
+        return view('index', compact('tasks', 'projects'));
     }
 
     function postUpdateTasksPriority(Request $request){
