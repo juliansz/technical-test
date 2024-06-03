@@ -13,4 +13,11 @@ class Task extends Model
     {
         return $this->belongsTo(Project::class);
     }
+
+    public function scopeFromProject($query, Project $project)
+    {
+        return $query->where(function ($query) use ($project) {
+            $query->where('project_id', $project->id);
+        });
+    }
 }
