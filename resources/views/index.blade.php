@@ -31,7 +31,7 @@
                         <div class="grid gap-12">
                             <ul id="list">
                                 @foreach($tasks as $task)
-                                    <li>{{ $task->priority }} - {{ $task->name }}</li>
+                                    <li data-id="{{ $task->id }}">{{ $task->priority }} - {{ $task->name }}</li>
                                 @endforeach
                             </ul>
                         </div>
