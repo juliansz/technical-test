@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -29,7 +29,7 @@
 
                     <main class="mt-12">
                         <div class="grid gap-12">
-                            <ul id="list">
+                            <ul id="list" data-update-url={{ route('UpdateTasksPriority') }}>
                                 @foreach($tasks as $task)
                                     <li data-id="{{ $task->id }}">{{ $task->priority }} - {{ $task->name }}</li>
                                 @endforeach
