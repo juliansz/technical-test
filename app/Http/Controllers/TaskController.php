@@ -8,7 +8,8 @@ use App\Models\Task;
 class TaskController extends Controller
 {
     function getIndex(){
-        $tasks = Task::all();
-        return view('index', compact('tasks'));
+        $project = Project::inRandomOrder()->first();
+        $tasks = Task::fromProject($project)->orderBy('priority', 'ASC')->get();
+        return view('index', compact('tasks', 'project'));
     }
 }

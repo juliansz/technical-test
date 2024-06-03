@@ -23,6 +23,7 @@
                     <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
                         <div class="flex lg:justify-center lg:col-start-2">
                             <h1>Tasks</h1>
+                            <h4>Project: {{ $project->name }}</h4>
                         </div>
                     </header>
 
@@ -30,7 +31,7 @@
                         <div class="grid gap-12">
                             <ul id="list">
                                 @foreach($tasks as $task)
-                                    <li>{{ $task->name }}</li>
+                                    <li>{{ $task->priority }} - {{ $task->name }}</li>
                                 @endforeach
                             </ul>
                         </div>
