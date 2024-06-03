@@ -18,7 +18,7 @@ let sort = new Sortable(list, {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': token
             },
-            body: JSON.stringify({ 'tasks' : tasks }),
+            body: JSON.stringify({ 'tasks' : tasks, 'project_id' : list.dataset.projectId }),
         };
 
         fetch(

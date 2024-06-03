@@ -20,4 +20,11 @@ class Task extends Model
             $query->where('project_id', $project->id);
         });
     }
+
+    public function scopeFromProjectId($query, int $project_id)
+    {
+        return $query->where(function ($query) use ($project_id) {
+            $query->where('project_id', $project_id);
+        });
+    }
 }

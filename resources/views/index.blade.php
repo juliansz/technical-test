@@ -29,9 +29,9 @@
 
                     <main class="mt-12">
                         <div class="grid gap-12">
-                            <ul id="list" data-update-url={{ route('UpdateTasksPriority') }}>
+                            <ul id="list" data-update-url={{ route('UpdateTasksPriority') }} data-project-id="{{ $project->id }}">
                                 @foreach($tasks as $task)
-                                    <li data-id="{{ $task->id }}">{{ $task->priority }} - {{ $task->name }}</li>
+                                    <li data-id="{{ $task->id }}">{{ $task->name }}</li>
                                 @endforeach
                             </ul>
                         </div>
