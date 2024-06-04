@@ -23,4 +23,33 @@ class TaskController extends Controller
         });
         return response(['OK']);
     }
+    
+    function getCreate(Request $request){
+        $projects = Project::all();
+        return view('edit', compact('projects'));
+    }
+
+    function postCreate(Request $request){
+        $priority = Task::fromProjectId($request->input('project_id'))->max('priority');
+        $priority = $priority ? $priority + 1 : 1;
+        $data = $request->only('name', 'project_id');
+        $data['priority'] = $priority;
+        Task::create($data);
+        return redirect()->route('Tasks');
+    }
+
+    function getUpdate(Request $request, Task $task){
+        $projects = Project::all();
+        return view('edit', compact('task', 'projects'));
+    }
+
+    function postUpdate(Request $request, Task $task){
+        $data = $request->only('name', 'project_id');
+        if($task->project_id != $request->input('project_id')){
+            $priority = Task::fromProjectId($request->input('project_id'))->max('priority');
+            $data['priority'] = $priority ? $priority + 1 : 1;
+        }
+        $task->update($data);
+        return redirect()->route('Tasks');
+    }
 }

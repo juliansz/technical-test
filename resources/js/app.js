@@ -40,7 +40,7 @@ let sort = new Sortable(list, {
             url,
             options
         ).then(response => {
-                console.log(response.json());
+            console.log('priority changed');
         }).catch(err => console.error(err))
 
 	},
