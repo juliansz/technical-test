@@ -52,4 +52,9 @@ class TaskController extends Controller
         $task->update($data);
         return redirect()->route('Tasks');
     }
+
+    function postDelete(Request $request, Task $task){
+        $task->delete();
+        return redirect()->route('Tasks');
+    }
 }
